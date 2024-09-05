@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('pages.index');
-// });
 Route::view('/', 'pages.index')->name('home');
 Route::view('/about', 'pages.about')->name('about');
 Route::view('/shop', 'pages.shop')->name('shop');
