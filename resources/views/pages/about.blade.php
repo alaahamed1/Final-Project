@@ -1,5 +1,4 @@
 @extends('layouts.master')
-@section('title', 'About Page')
 @section('main-content')
 
 <div class="bg-light py-3">
@@ -140,3 +139,4 @@
       </div>
     </div>
   </div>
+  @endsection

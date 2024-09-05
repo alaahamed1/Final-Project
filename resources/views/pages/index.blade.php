@@ -1,6 +1,5 @@
-@extends('layouts.master')
-@section('title', 'Home Page')
-@section('main-content')
+  @extends('layouts.master')
+  @section('main-content')
 
   <div class="site-blocks-cover" style="background-image: url({{ asset('assets/images/hero_1.jpg') }});" data-aos="fade">
     <div class="container">
@@ -187,3 +186,4 @@
       </div>
     </div>
   </div>
+  @endsection

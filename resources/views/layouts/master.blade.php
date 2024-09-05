@@ -26,9 +26,7 @@
 
     {{-- Ssection   --}}
 
-    @section('main-content')
-    @show
-
+    @yield('main-content')
 
     {{-- Fotter  --}}
     @include('includes.footer')
