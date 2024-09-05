@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'pages.index')->name('home');
-Route::view('/about', 'pages.about')->name('about');
-Route::view('/shop', 'pages.shop')->name('shop');
-Route::view('/contact', 'pages.contact')->name('contact');
-Route::view('/cart', 'pages.cart')->name('cart');
+Route::view('/', 'website.pages.index')->name('home');
+Route::view('/about', 'website.pages.about')->name('about');
+Route::view('/shop', 'website.pages.shop')->name('shop');
+Route::view('/contact', 'website.pages.contact')->name('contact');
+Route::view('/cart', 'website.pages.cart')->name('cart');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

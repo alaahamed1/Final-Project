@@ -16,20 +16,21 @@
     <link rel="stylesheet" href="{{asset("assets/css/owl.theme.default.min.css")}}">
     <link rel="stylesheet" href="{{asset("assets/css/aos.css")}}">
     <link rel="stylesheet" href="{{asset("assets/css/style.css")}}">
+    <title>@yield('title')</title>
 
 </head>
 
 <body>
     <div class="site-wrap">
     {{-- Navbar --}}
-    @include('includes.navbar')
+    @include('website.includes.navbar')
 
     {{-- Ssection   --}}
 
     @yield('main-content')
 
     {{-- Fotter  --}}
-    @include('includes.footer')
+    @include('website.includes.footer')
     </div>
 
     <script src='{{asset("assets/js/jquery-3.3.1.min.js")}}'></script>
