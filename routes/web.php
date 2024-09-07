@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\dashboard\DashboardMainController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +17,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'website.pages.index')->name('home');
-Route::view('/about', 'website.pages.about')->name('about');
-Route::view('/shop', 'website.pages.shop')->name('shop');
-Route::view('/contact', 'website.pages.contact')->name('contact');
-Route::view('/cart', 'website.pages.cart')->name('cart');
-
 Auth::routes();
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::view('/', 'website.pages.index')->name('home');
+        Route::view('/about', 'website.pages.about')->name('about');
+        Route::view('/shop', 'website.pages.shop')->name('shop');
+        Route::view('/contact', 'website.pages.contact')->name('contact');
+        Route::view('/cart', 'website.pages.cart')->name('cart');
+
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home-auth');
+
+        Route::get('/dashboard', [DashboardMainController::class, 'index'])->name('home-Dashboard');
+
+    });

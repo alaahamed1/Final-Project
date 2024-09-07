@@ -65,24 +65,17 @@
                             </div>
                         </div>
 
-<!-- User Type Dropdown -->
-<div class="row mb-3">
-    <label for="type" class="col-md-4 col-form-label text-md-end">{{ __('User Type') }}</label>
-
-    <div class="col-md-6">
-        <select id="type" class="form-control @error('type') is-invalid @enderror" name="type">
-            <option value="customer">{{ __('Customer') }}</option>
-            <option value="admin">{{ __('Admin') }}</option>
-            <option value="moderator">{{ __('Moderator') }}</option>
-        </select>
-
-        @error('type')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-</div>
+                        <div class="row mb-3">
+                            <label for="user_type" class="col-md-4 col-form-label text-md-end">{{ __('User Type') }}</label>
+                            <div class="col-md-6">
+                                <input id="user_type" type="text" required value="customer" class="form-control @error('user_type') is-invalid @enderror" name="user_type" readonly>
+                                @error('user_type')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                    </div>
 
                         <!-- Submit Button -->
                         <div class="row mb-0">
