@@ -52,8 +52,7 @@
                                         @if (auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'moderator')
                                             <button class="dropdown-item" type="button"
                                                 onclick="window.location.href= '{{ route('home-Dashboard') }}'">
-                                                <i class="fa-solid fa-gauge"></i>Dashboard
-                                            </button>
+                                                <i class="fa-solid fa-gauge"></i>Dashboard</button>
                                         @endif
 
                                         <a href="{{ route('logout') }}" class="dropdown-item"
@@ -74,10 +73,27 @@
                                             <i class="fa-solid fa-registered"></i>Register</button>
                                     @endif
                                 </div>
+{{-- translation --}}
+                                <li>
+                                    <a class="dropdown-toggle p-1" data-toggle="dropdown" aria-expanded="false"
+                                        aria-haspopup="true" type="button">
+                                        <i class="fa-solid fa-language"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                            <button class="dropdown-item" type="button"
+                                                onclick="window.location.href = '{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}';">
+                                                {{ $properties['native'] }}
+                                            </button>
+                                        @endforeach
+                                    </div>
+                                </li>
 
                             </ul>
+
                         </div>
                     </div>
+
 
                 </div>
             </div>
@@ -86,7 +102,7 @@
             <div class="container">
                 <ul class="site-menu js-clone-nav d-none d-md-block">
                     <li class="has-children">
-                        <a href="{{ Route('home') }}">Home</a>
+                        <a href="{{ Route('home') }}">{{ __('navbar.home') }}</a>
                         <ul class="dropdown">
                             <li><a href="#">Menu One</a></li>
                             <li><a href="#">Menu Two</a></li>
@@ -102,17 +118,17 @@
                         </ul>
                     </li>
                     <li class="has-children active">
-                        <a href="{{ Route('about') }}">About</a>
+                        <a href="{{ Route('about') }}">{{ __('navbar.about') }}</a>
                         <ul class="dropdown">
                             <li><a href="#">Menu One</a></li>
                             <li><a href="#">Menu Two</a></li>
                             <li><a href="#">Menu Three</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ Route('shop') }}">Shop</a></li>
-                    <li><a href="#">Catalogue</a></li>
-                    <li><a href="#">New Arrivals</a></li>
-                    <li><a href="{{ Route('contact') }}">Contact</a></li>
+                    <li><a href="{{ Route('shop') }}">{{ __('navbar.shop') }}</a></li>
+                    <li><a href="#">{{ __('navbar.catalogue') }}</a></li>
+                    <li><a href="#">{{ __('navbar.new_arrivals') }}</a></li>
+                    <li><a href="{{ Route('contact') }}">{{ __('navbar.contact') }}</a></li>
                 </ul>
             </div>
         </nav>

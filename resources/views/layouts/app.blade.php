@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +15,14 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+
+    <!-- Template Main CSS File -->
+    @if(app()->getLocale() == 'ar')
+        <link href='{{ asset("assets/dashboard/assets/css/style-rtl.css")}}' rel="stylesheet">
+    @else
+        <link href='{{ asset("assets/dashboard/assets/css/style.css")}}' rel="stylesheet">
+    @endif
 </head>
 <body>
     <div id="app">

@@ -4,6 +4,7 @@ use App\Http\Controllers\dashboard\DashboardMainController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\Http\Controllers\LanguageController;
 
 
 /*
@@ -33,5 +34,4 @@ Route::group(
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home-auth');
 
         Route::get('/dashboard', [DashboardMainController::class, 'index'])->name('home-Dashboard');
-
     });

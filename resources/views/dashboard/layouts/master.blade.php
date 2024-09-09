@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 
 <head>
   <meta charset="utf-8">
@@ -29,6 +29,13 @@
 
   <!-- Template Main CSS File -->
   <link href='{{ asset("assets/dashboard/assets/css/style.css")}}' rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+  @if(app()->getLocale() == 'ar')
+      <link href='{{ asset("assets/dashboard/assets/css/style-rtl.css")}}' rel="stylesheet">
+  @else
+      <link href='{{ asset("assets/dashboard/assets/css/style.css")}}' rel="stylesheet">
+  @endif
 
   <!-- =======================================================
   * Template Name: NiceAdmin
