@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\dashboard\CategoryController;
 use App\Http\Controllers\dashboard\DashboardMainController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\LanguageController;
-
+use App\Http\Middleware\custom_middleware\dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +34,15 @@ Route::group(
 
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home-auth');
 
-        Route::get('/dashboard', [DashboardMainController::class, 'index'])->name('home-Dashboard');
+
+        Route::group(
+            [
+            'middleware' => ['auth', 'dashboard']], function(){
+                Route::prefix('dashboard')->group(function(){
+                    Route::get('/', [DashboardMainController::class, 'index'])->middleware(dashboard::class)->name('dashboard');
+                    Route::resource('/categories', CategoryController::class);
+                });
+            });
+
+
     });

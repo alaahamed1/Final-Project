@@ -51,7 +51,7 @@
                                         </button>
                                         @if (auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'moderator')
                                             <button class="dropdown-item" type="button"
-                                                onclick="window.location.href= '{{ route('home-Dashboard') }}'">
+                                                onclick="window.location.href= '{{ route('dashboard') }}'">
                                                 <i class="fa-solid fa-gauge"></i>Dashboard</button>
                                         @endif
 
