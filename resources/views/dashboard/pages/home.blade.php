@@ -1,7 +1,6 @@
 @extends('dashboard.layouts.master')
 @section('title', 'Home')
 @section('main-content')
-    <main id="main" class="main">
         <div class="pagetitle">
             <h1>Dashboard</h1>
             <nav>
@@ -263,6 +262,4 @@
                 </div>
             </div>
         </section>
-    </main>
-
 @endsection

@@ -39,97 +39,98 @@
                                             <span class="count">2</span>
                                         </a>
                                     </li>
-                                @endif @endauth
-                                <a class="dropdown-toggle p-1" data-toggle="dropdown" aria-expanded="false"
-                                    area-haspopup="true" type="button">
-                                    <span class="icon icon-person"></span>
-                                </a>
-                                <div class="dropdown-menu dropdoown-menu-reight">
-                                    @if (auth()->user())
-                                        <button class="dropdown-item" type="button">
-                                            <i class="fa-solid fa-user"></i> Profile Management
-                                        </button>
-                                        @if (auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'moderator')
-                                            <button class="dropdown-item" type="button"
-                                                onclick="window.location.href= '{{ route('dashboard') }}'">
-                                                <i class="fa-solid fa-gauge"></i>Dashboard</button>
-                                        @endif
-
-                                        <a href="{{ route('logout') }}" class="dropdown-item"
-                                            onclick="event.preventDefault(); document.querySelector('#logout-form').submit();">
-                                            <i class="fa-solid fa-right-from-bracket"></i>
-                                            Logout
-                                            <form action="{{ route('logout') }}" method="POST" id="logout-form"
-                                                style="display: ;">
-                                                @csrf
-                                            </form>
-                                        </a>
-                                    @else
+                                @endif
+                            @endauth
+                            <a class="dropdown-toggle p-1" data-toggle="dropdown" aria-expanded="false"
+                                area-haspopup="true" type="button">
+                                <span class="icon icon-person"></span>
+                            </a>
+                            <div class="dropdown-menu dropdoown-menu-reight">
+                                @if (auth()->user())
+                                    <button class="dropdown-item" type="button">
+                                        <i class="fa-solid fa-user"></i> Profile Management
+                                    </button>
+                                    @if (auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'moderator')
                                         <button class="dropdown-item" type="button"
-                                            onclick="window.location.href = '{{ route('login') }}';">
-                                            <i class="fa-solid fa-right-to-bracket"></i>LogIn</button>
-                                        <button class="dropdown-item" type="button"
-                                            onclick="window.location.href = '{{ route('register') }}';">
-                                            <i class="fa-solid fa-registered"></i>Register</button>
+                                            onclick="window.location.href= '{{ route('dashboard') }}'">
+                                            <i class="fa-solid fa-gauge"></i>Dashboard</button>
                                     @endif
-                                </div>
-{{-- translation --}}
-                                <li>
-                                    <a class="dropdown-toggle p-1" data-toggle="dropdown" aria-expanded="false"
-                                        aria-haspopup="true" type="button">
-                                        <i class="fa-solid fa-language"></i>
+
+                                    <a href="{{ route('logout') }}" class="dropdown-item"
+                                        onclick="event.preventDefault(); document.querySelector('#logout-form').submit();">
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                        Logout
+                                        <form action="{{ route('logout') }}" method="POST" id="logout-form"
+                                            style="display: ;">
+                                            @csrf
+                                        </form>
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                            <button class="dropdown-item" type="button"
-                                                onclick="window.location.href = '{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}';">
-                                                {{ $properties['native'] }}
-                                            </button>
-                                        @endforeach
-                                    </div>
-                                </li>
+                                @else
+                                    <button class="dropdown-item" type="button"
+                                        onclick="window.location.href = '{{ route('login') }}';">
+                                        <i class="fa-solid fa-right-to-bracket"></i>LogIn</button>
+                                    <button class="dropdown-item" type="button"
+                                        onclick="window.location.href = '{{ route('register') }}';">
+                                        <i class="fa-solid fa-registered"></i>Register</button>
+                                @endif
+                            </div>
+                            {{-- translation --}}
+                            <li>
+                                <a class="dropdown-toggle p-1" data-toggle="dropdown" aria-expanded="false"
+                                    aria-haspopup="true" type="button">
+                                    <i class="fa-solid fa-language"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                        <button class="dropdown-item" type="button"
+                                            onclick="window.location.href = '{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}';">
+                                            {{ $properties['native'] }}
+                                        </button>
+                                    @endforeach
+                                </div>
+                            </li>
 
-                            </ul>
+                        </ul>
 
-                        </div>
                     </div>
-
-
                 </div>
+
+
             </div>
         </div>
-        <nav class="site-navigation text-right text-md-center" role="navigation">
-            <div class="container">
-                <ul class="site-menu js-clone-nav d-none d-md-block">
-                    <li class="has-children">
-                        <a href="{{ Route('home') }}">{{ __('navbar.home') }}</a>
-                        <ul class="dropdown">
-                            <li><a href="#">Menu One</a></li>
-                            <li><a href="#">Menu Two</a></li>
-                            <li><a href="#">Menu Three</a></li>
-                            <li class="has-children">
-                                <a href="#">Sub Menu</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">Menu One</a></li>
-                                    <li><a href="#">Menu Two</a></li>
-                                    <li><a href="#">Menu Three</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children active">
-                        <a href="{{ Route('about') }}">{{ __('navbar.about') }}</a>
-                        <ul class="dropdown">
-                            <li><a href="#">Menu One</a></li>
-                            <li><a href="#">Menu Two</a></li>
-                            <li><a href="#">Menu Three</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{ Route('shop') }}">{{ __('navbar.shop') }}</a></li>
-                    <li><a href="#">{{ __('navbar.catalogue') }}</a></li>
-                    <li><a href="#">{{ __('navbar.new_arrivals') }}</a></li>
-                    <li><a href="{{ Route('contact') }}">{{ __('navbar.contact') }}</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    </div>
+    <nav class="site-navigation text-right text-md-center" role="navigation">
+        <div class="container">
+            <ul class="site-menu js-clone-nav d-none d-md-block">
+                <li class="has-children">
+                    <a href="{{ Route('home') }}">{{ __('navbar.home') }}</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Menu One</a></li>
+                        <li><a href="#">Menu Two</a></li>
+                        <li><a href="#">Menu Three</a></li>
+                        <li class="has-children">
+                            <a href="#">Sub Menu</a>
+                            <ul class="dropdown">
+                                <li><a href="#">Menu One</a></li>
+                                <li><a href="#">Menu Two</a></li>
+                                <li><a href="#">Menu Three</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-children active">
+                    <a href="{{ Route('about') }}">{{ __('navbar.about') }}</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Menu One</a></li>
+                        <li><a href="#">Menu Two</a></li>
+                        <li><a href="#">Menu Three</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ Route('shop') }}">{{ __('navbar.shop') }}</a></li>
+                <li><a href="#">{{ __('navbar.catalogue') }}</a></li>
+                <li><a href="#">{{ __('navbar.new_arrivals') }}</a></li>
+                <li><a href="{{ Route('contact') }}">{{ __('navbar.contact') }}</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
