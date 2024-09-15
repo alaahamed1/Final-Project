@@ -40,7 +40,7 @@ Route::group(
             'middleware' => ['auth', 'dashboard']], function(){
                 Route::prefix('dashboard')->group(function(){
                     Route::get('/', [DashboardMainController::class, 'index'])->middleware(dashboard::class)->name('dashboard');
-                    Route::resource('/categories', CategoryController::class);
+                    Route::resource('categories', CategoryController::class);
                 });
             });
 

@@ -2,12 +2,26 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Builder;
 
+
+/**
+ * Class User
+ *
+ * @property $id
+ * @property $name
+ * @property $email
+ * @property $password
+ * @property $type
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @mixin Builder
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
