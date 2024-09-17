@@ -3,24 +3,24 @@
     Categories
 @endsection
 @section('main-content')
+<div class="pagetitle">
+    <div class="d-flex justify-content-between">
+        <h1>Data Tables</h1>
+        <button class="border border-2 rounded-start  border-warning"><a href="{{ route('categories.create') }}">Create Category</a></button>
+    </div>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item">Tables</li>
+            <li class="breadcrumb-item active">Data</li>
+        </ol>
+    </nav>
+
+</div><!-- End Page Title -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-
-                            <span id="card_title">
-                                {{ __('Categories') }}
-                            </span>
-
-                            <div class="float-right">
-                                <a href="{{ route('categories.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                    {{ __('Create New') }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success m-4">
                             <p>{{ $message }}</p>
@@ -39,7 +39,7 @@
                                     <th >Create User Id</th>
                                     <th >Update User Id</th>
 
-                                    <th></th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
