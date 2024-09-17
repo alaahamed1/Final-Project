@@ -43,32 +43,36 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Category $category): View
     {
-        //
+        return view('dashboard.pages.categories.show', compact('category'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('dashboard.pages.categories.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, Category $category)
     {
-        //
+        $validatedData = $request->validated();
+        $validatedData['update_user_id'] = auth()->id();
+        $category->update($validatedData);
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-       //
+        $category->delete();
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
 }
