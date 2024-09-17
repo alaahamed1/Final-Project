@@ -24,7 +24,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-lg-3 col-md-4 label">Name</div>
-                            <div class="col-lg-9 col-md-8">{{ $category->name }}</div>
+                            <div class="col-lg-9 col-md-8">{{ $category->title }}</div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-lg-3 col-md-4 label">Description</div>
