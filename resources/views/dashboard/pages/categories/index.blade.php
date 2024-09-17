@@ -33,33 +33,34 @@
                                 <thead class="thead">
                                 <tr>
                                     <th>No</th>
-
                                     <th >Title</th>
                                     <th >Description</th>
                                     <th >Create User Id</th>
                                     <th >Update User Id</th>
-
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($categories as $category)
                                     <tr>
-                                        <td>{{ ++$i }}</td>
-
+                                        <td>{{ $loop->iteration }}</td>
                                         <td >{{ $category->title }}</td>
                                         <td >{{ $category->description }}</td>
                                         <td >{{ $category->create_user_id }}</td>
                                         <td >{{ $category->update_user_id }}</td>
 
                                         <td>
-                                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
-                                            <a class="btn btn-sm btn-info" href="{{ route('categories.show', $category->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                <a class="btn btn-sm btn-success" href="{{ route('categories.edit', $category->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
-                                            </form>
+                                            <td>
+                                                <form action="{{ route('categories.destroy' , $category->id) }}" method="post" class="d-flex justify-content-between aligin-items-center">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <a class="btn btn-warning font-weight-bold btn-sm fs-6" href="{{ route('categories.show' , $category->id) }}">Show</a>
+                                                    @if (auth()->user()->user_type  == 'admin')
+                                                    <a class="btn btn-primary btn-sm font-weight-bold fs-6" href="{{ route('categories.edit' , $category->id) }}">Edit</a>
+                                                    <button type="submit" class="btn btn-danger btn-sm font-weight-bold fs-6">Delete</button>
+                                                    @endif
+                                                </form>
+                                            </td>
                                         </td>
                                     </tr>
                                 @endforeach
