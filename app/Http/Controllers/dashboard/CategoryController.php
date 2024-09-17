@@ -78,26 +78,20 @@ class CategoryController extends Controller
      */
     public function update(Request $request, int $id)
     {
-            $request->validate([
-                'title' => 'required|string|max:255',
-                'description' => 'nullable|string|max:1020',
-                'create_user_id' => 'nullable|exists:users,id',
-                'update_user_id' => 'nullable|exists:users,id',
-            ]);
-            //update Category
-            $category_old = category::find($id);
-            $category     = category::find($id);
-                $category->title = $request->title;
-            if($category->title == $request->title){
-                $category->title = $category->title;
-            }
-            else{
-                $category->title = $request->title;
-            }
-            $category->description = $request->description;
-            $category->update_user_id = auth()->user()->id;
-            $category->save();
-            return redirect()->route('categories.index');
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string|max:1020',
+            'create_user_id' => 'nullable|exists:users,id',
+            'update_user_id' => 'nullable|exists:users,id',
+        ]);
+    
+        // Update Category
+        $category = category::find($id);
+        $category->title = $request->title;
+        $category->description = $request->description;
+        $category->update_user_id = auth()->user()->id;
+        $category->save();
+        return redirect()->route('categories.index');
     }
 
     /**
