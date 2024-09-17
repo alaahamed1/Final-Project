@@ -3,20 +3,21 @@
     Categories
 @endsection
 @section('main-content')
-<div class="pagetitle">
-    <div class="d-flex justify-content-between">
-        <h1>Data Tables</h1>
-        <button class="border border-2 rounded-start  border-warning"><a href="{{ route('categories.create') }}">Create Category</a></button>
-    </div>
-    <nav>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item">Tables</li>
-            <li class="breadcrumb-item active">Data</li>
-        </ol>
-    </nav>
+    <div class="pagetitle">
+        <div class="d-flex justify-content-between">
+            <h1>Data Table</h1>
+            <button class="border border-2 rounded-start  border-warning"><a href="{{ route('categories.create') }}">Create
+                    Category</a></button>
+        </div>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item">Tables</li>
+                <li class="breadcrumb-item active">Data</li>
+            </ol>
+        </nav>
 
-</div><!-- End Page Title -->
+    </div><!-- End Page Title -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -31,39 +32,44 @@
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
-                                <tr>
-                                    <th>No</th>
-                                    <th >Title</th>
-                                    <th >Description</th>
-                                    <th >Create User Id</th>
-                                    <th >Update User Id</th>
-                                    <th>Action</th>
-                                </tr>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Create User Id</th>
+                                        <th>Update User Id</th>
+                                        <th>Action</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($categories as $category)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td >{{ $category->title }}</td>
-                                        <td >{{ $category->description }}</td>
-                                        <td >{{ $category->create_user_id }}</td>
-                                        <td >{{ $category->update_user_id }}</td>
+                                    @foreach ($categories as $category)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $category->title }}</td>
+                                            <td>{{ $category->description }}</td>
+                                            <td>{{ $category->create_user_id }}</td>
+                                            <td>{{ $category->update_user_id }}</td>
 
-                                        <td>
                                             <td>
-                                                <form action="{{ route('categories.destroy' , $category->id) }}" method="post" class="d-flex justify-content-between aligin-items-center">
+                                            <td>
+                                                <form action="{{ route('categories.destroy', $category->id) }}"
+                                                    method="post"
+                                                    class="d-flex justify-content-between aligin-items-center">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a class="btn btn-warning font-weight-bold btn-sm fs-6" href="{{ route('categories.show' , $category->id) }}">Show</a>
-                                                    @if (auth()->user()->user_type  == 'admin')
-                                                    <a class="btn btn-primary btn-sm font-weight-bold fs-6" href="{{ route('categories.edit' , $category->id) }}">Edit</a>
-                                                    <button type="submit" class="btn btn-danger btn-sm font-weight-bold fs-6">Delete</button>
+                                                    <a class="btn btn-warning font-weight-bold btn-sm fs-6"
+                                                        href="{{ route('categories.show', $category->id) }}">Show</a>
+                                                    @if (auth()->user()->user_type == 'admin')
+                                                        <a class="btn btn-primary btn-sm font-weight-bold fs-6"
+                                                            href="{{ route('categories.edit', $category->id) }}">Edit</a>
+                                                        <button type="submit"
+                                                            class="btn btn-danger btn-sm font-weight-bold fs-6">Delete</button>
                                                     @endif
                                                 </form>
                                             </td>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

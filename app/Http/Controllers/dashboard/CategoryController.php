@@ -15,10 +15,8 @@ class CategoryController extends Controller
      */
     public function index(Request $request): View
     {
-        $categories = Category::paginate();
-
-        return view('dashboard.pages.categories.index', compact('categories'))
-            ->with('i', ($request->input('page', 1) - 1) * $categories->perPage());
+        $categories = category::orderBy('id' , 'desc')->simplePaginate(4);
+        return view('dashboard.pages.categories.index ' , compact('categories'));
     }
 
     /**
@@ -108,5 +106,25 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
+    }
+
+
+    public function delete(){
+        $categories = category::orderBy('id' , 'desc')->onlyTrashed()->simplePaginate(4);
+        $categories_count = $categories->count();
+        return view('dashboard.pages.categories.delete' , compact('categories' , 'categories_count'));
+    }
+    public function restore($id){
+        $category = category::withTrashed()->find($id);
+        $category->restore();
+        $category = category::findOrFail($id);
+        $category->update_user_id = auth()->user()->id;
+        $category->save();
+        return redirect()->route('categories.index');
+}
+    public function forceDelete($id){
+        $category = category::where('id' , $id);
+        $category->forceDelete();
+        return redirect()->route('categories.index');
     }
 }
