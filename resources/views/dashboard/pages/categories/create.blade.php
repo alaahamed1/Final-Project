@@ -22,8 +22,6 @@
                         <form method="POST" action="{{ Route('categories.store') }}">
                             @csrf
                             @include('dashboard.pages.categories.form')
-                            <button type="submit" class="btn btn-success">Submit</button>
-                            <button type="reset" class="btn btn-primary">Reset</button>
                         </form><!-- End General Form Elements -->
                     </div>
                 </div>
