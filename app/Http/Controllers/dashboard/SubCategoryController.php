@@ -43,5 +43,22 @@ class SubCategoryController extends Controller
         return Redirect::route('sub-categories.index')
             ->with('success', 'SubCategory created successfully.');
     }
+    public function edit($id): View
+    {
+        $subCategory = SubCategory::findOrFail($id);
+        $categories = Category::all();
+        return view('dashboard.pages.sub-category.edit', compact('subCategory', 'categories'));
+    }
 
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(SubCategoryRequest $request, $id): RedirectResponse
+    {
+        $subCategory = SubCategory::findOrFail($id);
+        $subCategory->update($request->validated());
+
+        return Redirect::route('sub-categories.index')
+            ->with('success', 'SubCategory updated successfully.');
+    }
 }
