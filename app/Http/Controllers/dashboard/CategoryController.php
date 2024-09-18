@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index(Request $request): View
     {
-        $categories = category::orderBy('id' , 'desc')->simplePaginate(4);
+        $categories = Category::orderBy('id' , 'desc')->simplePaginate(4);
         return view('dashboard.pages.categories.index ' , compact('categories'));
     }
 
@@ -43,7 +43,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = category::find($id);
+        $category = Category::find($id);
         if($category == null){
             return view('dashboard.pages.categories.404.category-404');
         }
@@ -56,7 +56,7 @@ class CategoryController extends Controller
      */
     public function edit( int $id)
     {
-        $category = category::find($id);
+        $category = Category::find($id);
         if($category == null){
             return view('dashboard.pages.categories.404.category-404');
         }
@@ -82,9 +82,9 @@ class CategoryController extends Controller
             'create_user_id' => 'nullable|exists:users,id',
             'update_user_id' => 'nullable|exists:users,id',
         ]);
-    
+
         // Update Category
-        $category = category::find($id);
+        $category = Category::find($id);
         $category->title = $request->title;
         $category->description = $request->description;
         $category->update_user_id = auth()->user()->id;
@@ -104,20 +104,20 @@ class CategoryController extends Controller
 
 
     public function delete(){
-        $categories = category::orderBy('id' , 'desc')->onlyTrashed()->simplePaginate(4);
+        $categories = Category::orderBy('id' , 'desc')->onlyTrashed()->simplePaginate(4);
         $categories_count = $categories->count();
         return view('dashboard.pages.categories.delete' , compact('categories' , 'categories_count'));
     }
     public function restore($id){
-        $category = category::withTrashed()->find($id);
+        $category = Category::withTrashed()->find($id);
         $category->restore();
-        $category = category::findOrFail($id);
+        $category = Category::findOrFail($id);
         $category->update_user_id = auth()->user()->id;
         $category->save();
         return redirect()->route('categories.index');
 }
     public function forceDelete($id){
-        $category = category::where('id' , $id);
+        $category = Category::where('id' , $id);
         $category->forceDelete();
         return redirect()->route('categories.index');
     }

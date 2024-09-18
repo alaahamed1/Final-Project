@@ -31,4 +31,13 @@ class Category extends Model
     {
         return $this->belongsTo(User::class, 'update_user_id', 'id');
     }
+    /**
+     * Get the subcategories for the category.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function subCategories(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(SubCategory::class);
+    }
 }

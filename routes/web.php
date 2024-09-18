@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\dashboard\CategoryController;
+use App\Http\Controllers\dashboard\SubcategoryController;
 use App\Http\Controllers\dashboard\DashboardMainController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -40,10 +41,22 @@ Route::group(
             'middleware' => ['auth', 'dashboard']], function(){
                 Route::prefix('dashboard')->group(function(){
                     Route::get('/', [DashboardMainController::class, 'index'])->middleware(dashboard::class)->name('dashboard');
+                    // categories
                     Route::resource('categories', CategoryController::class);
                     Route::get('/category/delete' , [CategoryController::class , 'delete'])->name('categories.delete');
                     Route::get('/category/restore/{id}' ,[CategoryController::class , 'restore'])->name('categories.restore');
                     Route::delete('/category/forceDelete/{id}' , [CategoryController::class , 'forceDelete'])->name('categories.forceDelete');
+                    // sub categories
+                    Route::resource('subcategories', SubcategoryController::class);
+                    // Route::get('/subcategory/delete' , [SubcategoryController::class , 'delete'])->name('subcategories.delete');
+                    // Route::get('/subcategory/restore/{id}' ,[SubcategoryController::class , 'restore'])->name('subcategories.restore');
+                    // Route::delete('/subcategory/forceDelete/{id}' , [SubcategoryController::class , 'forceDelete'])->name('subcategories.forceDelete');
+                    // // products
+                    // Route::resource('products', ProductController::class);
+                    // Route::get('/product/delete' , [ProductController::class , 'delete'])->name('products.delete');
+                    // Route::get('/product/restore/{id}' ,[ProductController::class , 'restore'])->name('products.restore');
+                    // Route::delete('/product/forceDelete/{id}' , [ProductController::class , 'forceDelete'])->name('products.forceDelete');
+
                 });
             });
 
