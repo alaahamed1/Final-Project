@@ -50,6 +50,16 @@ class SubCategoryController extends Controller
         return view('dashboard.pages.sub-category.edit', compact('subCategory', 'categories'));
     }
 
+    // ======================================={{{{{ Show subCategores }}}}}=============================================================
+    public function show($id)
+    {
+        $subCategory = SubCategory::findOrFail($id);
+        $category = Category::findOrFail($id);
+        return view('dashboard.pages.sub-category.show', compact('subCategory','category'));
+
+    }
+
+
     /**
      * Update the specified resource in storage.
      */

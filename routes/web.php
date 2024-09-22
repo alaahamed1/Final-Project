@@ -48,9 +48,9 @@ Route::group(
                     Route::delete('/category/forceDelete/{id}' , [CategoryController::class , 'forceDelete'])->name('categories.forceDelete');
                     // sub categories
                     Route::resource('sub-categories', SubcategoryController::class);
-                    // Route::get('/subcategory/delete' , [SubcategoryController::class , 'delete'])->name('subcategories.delete');
-                    // Route::get('/subcategory/restore/{id}' ,[SubcategoryController::class , 'restore'])->name('subcategories.restore');
-                    // Route::delete('/subcategory/forceDelete/{id}' , [SubcategoryController::class , 'forceDelete'])->name('subcategories.forceDelete');
+                     Route::get('/subcategory/delete' , [SubcategoryController::class , 'delete'])->name('subcategories.delete');
+                     Route::get('/subcategory/restore/{id}' ,[SubcategoryController::class , 'restore'])->name('subcategories.restore');
+                     Route::delete('/subcategory/forceDelete/{id}' , [SubcategoryController::class , 'forceDelete'])->name('subcategories.forceDelete');
                     // // products
                     // Route::resource('products', ProductController::class);
                     // Route::get('/product/delete' , [ProductController::class , 'delete'])->name('products.delete');
