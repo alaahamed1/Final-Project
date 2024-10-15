@@ -48,6 +48,11 @@
                         <i class="fa-solid fa-square-plus fs-5"></i><span>Create</span>
                     </a>
                 </li>
+                <li>
+                    <a href={{ route('users.sendNotification')}}>
+                        <i class="fa-solid fa-user-tie fs-5"></i><span>Send Notification</span>
+                    </a>
+                </li>
             </ul>
         </li>
 

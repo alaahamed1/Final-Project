@@ -20,6 +20,9 @@ use Illuminate\Database\Eloquent\Builder;
  * @property $created_at
  * @property $updated_at
  *
+ * @property $notifications
+ * @property $unreadNotifications
+ *
  * @mixin Builder
  */
 class User extends Authenticatable
