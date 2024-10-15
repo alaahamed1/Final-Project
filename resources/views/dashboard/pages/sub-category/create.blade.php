@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 
-@section('template_title')
+@section('title')
     {{ __('Create') }} Sub Category
 @endsection
 
