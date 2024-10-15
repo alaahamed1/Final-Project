@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
+        $user->createToken('authToken');
         //moderator user
         $user = User::create([
             'name' => 'moderator',
@@ -32,6 +33,8 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
+        $user->createToken('authToken');
+
         //customer user
         $user = User::create([
             'name' => 'customer',
@@ -41,5 +44,6 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
+        $user->createToken('authToken');
     }
 }
