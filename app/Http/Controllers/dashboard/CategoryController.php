@@ -48,7 +48,6 @@ class CategoryController extends Controller
             return view('dashboard.pages.categories.404.category-404');
         }
         return view('dashboard.pages.categories.show' , compact('category'));
-
     }
 
     /**
