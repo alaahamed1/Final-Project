@@ -30,6 +30,10 @@ Route::group(
         Route::view('/', 'website.pages.index')->name('home');
         Route::view('/about', 'website.pages.about')->name('about');
         Route::view('/shop', 'website.pages.shop')->name('shop');
+    Route::middleware('auth')->group(function () {
+        Route::get('/profile', [UserShopController::class, 'profile'])->name('profile');
+        Route::post('/profile', [UserShopController::class, 'updateProfile'])->name('profile.update');
+    });
         Route::view('/contact', 'website.pages.contact')->name('contact');
         Route::view('/cart', 'website.pages.cart')->name('cart');
 
