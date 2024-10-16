@@ -4,6 +4,7 @@ use App\Http\Controllers\dashboard\CategoryController;
 use App\Http\Controllers\dashboard\ContactDataController;
 use App\Http\Controllers\dashboard\DashboardMainController;
 use App\Http\Controllers\dashboard\SubcategoryController;
+use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\dashboard\ProductController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\UserShopController;
@@ -40,6 +41,7 @@ Route::group([
     Route::middleware(['auth', 'dashboard'])->prefix('dashboard')->group(function () {
 
         Route::get('/', [DashboardMainController::class, 'index'])->name('dashboard');
+        Route::get('/notifications', [DashboardMainController::class, 'notificatons'])->name('notifications');
 
         // Category management routes
         Route::resource('categories', CategoryController::class);
@@ -54,6 +56,8 @@ Route::group([
         Route::delete('subcategory/forceDelete/{id}', [SubcategoryController::class, 'forceDelete'])->name('subcategories.forceDelete');
 
         Route::resource('contact-data', ContactDataController::class);
+        Route::get('users/notification', [UserController::class, 'notification'])->name('users.notification');
+        Route::post('users/notification', [UserController::class, 'sendNotification'])->name('users.sendNotification');
 
         // Uncomment these if product routes are needed in the future
         Route::resource('products', ProductController::class);

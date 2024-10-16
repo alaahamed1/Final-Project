@@ -49,7 +49,11 @@
 </head>
 
 <body>
-
+<script>
+    window.user = {
+        token: '{{ auth()->user()->tokens->first()->token }}'
+    }
+</script>
     @include('dashboard.includes.top-bar')
     @include('dashboard.includes.side-bar')
 
@@ -72,6 +76,7 @@
 
     <!-- Template Main JS File -->
     <script src='{{ asset('assets/dashboard/assets/js/main.js') }}'></script>
+    <script src='{{ asset('assets/dashboard/assets/js/notifications.js') }}'></script>
 
 </body>
 
