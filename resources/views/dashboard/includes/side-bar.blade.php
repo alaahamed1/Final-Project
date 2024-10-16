@@ -54,17 +54,22 @@
         {{-- Products  --}}
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#products" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Products</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-cart"></i><span>Products</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="products" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="components-alerts.html">
-                        <i class="fa-solid fa-user-tie fs-5"></i><span>Index</span>
+                    <a href="{{ route('products.index') }}">
+                        <i class="fa-solid fa-list fs-5"></i><span>Index</span>
                     </a>
                 </li>
                 <li>
-                    <a href="components-accordion.html">
-                        <i class="fa-brands fa-monero fs-5"></i><span>Create</span>
+                    <a href="{{ route('products.create') }}">
+                        <i class="fa-solid fa-plus fs-5"></i><span>Create</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('products.delete') }}">
+                        <i class="fa-solid fa-trash-alt fs-5"></i><span>Trash</span>
                     </a>
                 </li>
             </ul>

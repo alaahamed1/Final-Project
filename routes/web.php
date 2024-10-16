@@ -4,6 +4,7 @@ use App\Http\Controllers\dashboard\CategoryController;
 use App\Http\Controllers\dashboard\ContactDataController;
 use App\Http\Controllers\dashboard\DashboardMainController;
 use App\Http\Controllers\dashboard\SubcategoryController;
+use App\Http\Controllers\dashboard\ProductController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\UserShopController;
 use Illuminate\Support\Facades\Auth;
@@ -55,9 +56,9 @@ Route::group([
         Route::resource('contact-data', ContactDataController::class);
 
         // Uncomment these if product routes are needed in the future
-        // Route::resource('products', ProductController::class);
-        // Route::get('product/delete', [ProductController::class, 'delete'])->name('products.delete');
-        // Route::get('product/restore/{id}', [ProductController::class, 'restore'])->name('products.restore');
-        // Route::delete('product/forceDelete/{id}', [ProductController::class, 'forceDelete'])->name('products.forceDelete');
+        Route::resource('products', ProductController::class);
+        Route::get('product/delete', [ProductController::class, 'delete'])->name('products.delete');
+        Route::get('product/restore/{id}', [ProductController::class, 'restore'])->name('products.restore');
+        Route::delete('product/forceDelete/{id}', [ProductController::class, 'forceDelete'])->name('products.forceDelete');
     });
 });
