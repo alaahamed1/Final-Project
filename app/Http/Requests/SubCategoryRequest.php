@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CategoryRequest extends FormRequest
+class SubCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,17 +23,16 @@ class CategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->route('category') ?? null;
+        $id = $this->route('sub_category') ?? null;
         return [
             'title' => [
                 'required',
                 'string',
                 'max:255',
-                Rule::unique('categories')->ignore($id),
+                Rule::unique('sub_categories')->ignore($id),
             ],
-            'description' => 'nullable|string|max:1020',
-            'create_user_id' => 'nullable|exists:users,id',
-            'update_user_id' => 'nullable|exists:users,id',
+			'description' => 'string',
+			'category_id' => 'required',
         ];
     }
 }

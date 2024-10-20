@@ -2,22 +2,43 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * Class SubCategory
+ *
+ * @property $id
+ * @property $title
+ * @property $description
+ * @property $category_id
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @property Category $category
+ * @package App
+ * @mixin Builder
+ */
 class SubCategory extends Model
 {
-    use HasFactory;
 
-    protected $guarded = [];
+    protected $perPage = 20;
 
     /**
-     * Get the category that owns the subcategory.
+     * The attributes that are mass assignable.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @var array<int, string>
      */
-    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    protected $fillable = ['title', 'description', 'category_id'];
+
+
+    /**
+     * @return BelongsTo
+     */
+    public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(\App\Models\Category::class, 'category_id', 'id');
     }
+
 }

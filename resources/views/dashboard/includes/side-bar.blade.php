@@ -79,12 +79,12 @@
             </a>
             <ul id="subcategory" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('subcategories.index') }}">
+                    <a href="{{ route('sub-categories.index') }}">
                         <i class="fa-solid fa-user-tie fs-5"></i><span>Index</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('subcategories.create') }}">
+                    <a href="{{ route('sub-categories.create') }}">
                         <i class="fa-brands fa-monero fs-5"></i><span>Create</span>
                     </a>
                 </li>
