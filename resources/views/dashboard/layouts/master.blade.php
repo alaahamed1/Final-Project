@@ -49,11 +49,7 @@
 </head>
 
 <body>
-<script>
-    window.user = {
-        token: '{{ auth()->user()->tokens->first()->token }}'
-    }
-</script>
+
     @include('dashboard.includes.top-bar')
     @include('dashboard.includes.side-bar')
 

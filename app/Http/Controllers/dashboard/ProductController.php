@@ -17,6 +17,11 @@ class ProductController extends Controller
         $products = Product::with('category')->orderBy('id', 'desc')->paginate(10);
         return view('dashboard.products.index', compact('products'));
     }
+    public function shop()
+    {
+        $products = Product::with('category')->orderBy('id', 'desc')->simplePaginate(10);
+        return view('website.pages.shop', compact('products'));
+    }
 
     public function create()
     {
@@ -39,8 +44,9 @@ class ProductController extends Controller
     return redirect()->route('products.index')->with('success', 'Product created successfully.');
 }
 
-    public function show(Product $product)
+    public function show($id, Product $product)
     {
+        $product = Product::findOrFail($id);
         return view('dashboard.products.show', compact('product'));
     }
 

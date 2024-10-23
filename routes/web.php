@@ -65,4 +65,6 @@ Route::group([
         Route::get('product/restore/{id}', [ProductController::class, 'restore'])->name('products.restore');
         Route::delete('product/forceDelete/{id}', [ProductController::class, 'forceDelete'])->name('products.forceDelete');
     });
+
+    Route::get('/shop', [ProductController::class, 'shop'])->name('shop');
 });
