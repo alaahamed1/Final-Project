@@ -47,7 +47,9 @@
                             </a>
                             <div class="dropdown-menu dropdoown-menu-reight">
                                 @if (auth()->user())
-                                    <button class="dropdown-item" type="button">
+                                    <button class="dropdown-item" type="button"
+                                        onclick="window.location.href= '{{ route('profile') }}'"
+                                    >
                                         <i class="fa-solid fa-user"></i> Profile Management
                                     </button>
                                     @if (auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'moderator')
@@ -127,8 +129,6 @@
                     </ul>
                 </li>
                 <li><a href="{{ Route('shop') }}">{{ __('navbar.shop') }}</a></li>
-                <li><a href="#">{{ __('navbar.catalogue') }}</a></li>
-                <li><a href="#">{{ __('navbar.new_arrivals') }}</a></li>
                 <li><a href="{{ Route('contact') }}">{{ __('navbar.contact') }}</a></li>
             </ul>
         </div>

@@ -18,36 +18,41 @@
         </div>
         <div class="col-md-7">
 
-          <form action="#" method="post">
-
+          <form action="{{ route('contact') }}" method="post">
+              @csrf
             <div class="p-3 p-lg-5 border">
               <div class="form-group row">
                 <div class="col-md-6">
-                  <label for="c_fname" class="text-black">First Name <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_fname" name="c_fname">
+                  <label for="first_name" class="text-black">First Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="first_name" name="first_name">
+                    <div class="text-danger">{{ $errors->first('first_name') }}</div>
                 </div>
                 <div class="col-md-6">
-                  <label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_lname" name="c_lname">
+                  <label for="last_name" class="text-black">Last Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="last_name" name="last_name">
+                    <div class="text-danger">{{ $errors->first('last_name') }}</div>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12">
-                  <label for="c_email" class="text-black">Email <span class="text-danger">*</span></label>
-                  <input type="email" class="form-control" id="c_email" name="c_email" placeholder="">
+                  <label for="email" class="text-black">Email <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="">
+                    <div class="text-danger">{{ $errors->first('email') }}</div>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12">
-                  <label for="c_subject" class="text-black">Subject </label>
-                  <input type="text" class="form-control" id="c_subject" name="c_subject">
+                  <label for="subject" class="text-black">Subject </label>
+                  <input type="text" class="form-control" id="subject" name="subject">
+                    <div class="text-danger">{{ $errors->first('subject') }}</div>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <label for="c_message" class="text-black">Message </label>
-                  <textarea name="c_message" id="c_message" cols="30" rows="7" class="form-control"></textarea>
+                  <label for="message" class="text-black">Message </label>
+                  <textarea name="message" id="message" cols="30" rows="7" class="form-control"></textarea>
+                    <div class="text-danger">{{ $errors->first('message') }}</div>
                 </div>
               </div>
               <div class="form-group row">

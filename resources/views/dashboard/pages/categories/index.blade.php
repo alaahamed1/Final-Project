@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.master')
-@section('template_title')
+@section('title')
     Categories
 @endsection
 @section('main-content')
