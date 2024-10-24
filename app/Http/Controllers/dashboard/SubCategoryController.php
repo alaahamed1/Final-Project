@@ -58,7 +58,13 @@ class SubCategoryController extends Controller
         return view('dashboard.pages.sub-category.show', compact('subCategory','category'));
 
     }
-
+    
+    public function destroy($id)
+{
+    $subCategory = SubCategory::findOrFail($id);
+    $subCategory->delete();
+    return redirect()->route('sub-categories.index')->with('success', 'SubCategory deleted successfully.');
+}
 
     /**
      * Update the specified resource in storage.

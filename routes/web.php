@@ -53,7 +53,8 @@ Route::group([
         Route::resource('sub-categories', SubcategoryController::class);
         Route::get('subcategory/delete', [SubcategoryController::class, 'delete'])->name('subcategories.delete');
         Route::get('subcategory/restore/{id}', [SubcategoryController::class, 'restore'])->name('subcategories.restore');
-        Route::delete('subcategory/forceDelete/{id}', [SubcategoryController::class, 'forceDelete'])->name('subcategories.forceDelete');
+        // Route::delete('subcategory/forceDelete/{id}', [SubcategoryController::class, 'forceDelete'])->name('subcategories.forceDelete');
+        Route::delete('/sub-categories/{id}', [SubCategoryController::class, 'destroy'])->name('sub-categories.destroy');
 
         Route::resource('contact-data', ContactDataController::class);
         Route::get('users/notification', [UserController::class, 'notification'])->name('users.notification');
