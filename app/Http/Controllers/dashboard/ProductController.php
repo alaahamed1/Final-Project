@@ -44,7 +44,7 @@ class ProductController extends Controller
     return redirect()->route('products.index')->with('success', 'Product created successfully.');
 }
 
-    public function show($id, Product $product)
+    public function show($id)
     {
         $product = Product::findOrFail($id);
         return view('dashboard.products.show', compact('product'));
